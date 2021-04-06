@@ -63,3 +63,35 @@ class Halma():
         self.current_player = 1  # might want to track this another way
 
         self.board_view.mainloop()  # Begin tkinter main loop
+
+    def moveGenerator(self, player_turn):
+        """ Generates all legal moves for the 
+            current player
+
+            Parameters: 
+                player_turn (str): A string representing
+                                   the current player
+                                   (i.e red/green)
+
+            Returns:
+                A list of all possible legal moves
+        """
+        pass
+
+    def action(self, move):
+        """ Generates a new board representing the
+            move the player took
+
+            Parameters:
+                move (str): A string representing the 
+                            move the player made
+                            (i.e. "a3->b4")
+
+            Returns:
+                A new board object reflecting the action.
+                If the action is not legal, an error is 
+                returned
+        """
+        pass
+
+

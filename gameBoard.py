@@ -19,3 +19,17 @@ class Board(tk.Tk):
                     button.grid(row=elem[0], column=elem[1], pady=2)
 
         messagedisplay = tk.label(text=gamemessage)
+    
+
+    def detectWin(self, init_board):
+        """ Checks to see if current player
+            has won
+
+            Parameters:
+                init_board (???): The board object
+
+            Returns:
+                True if the current player has
+                won; False otherwise
+        """
+        pass
