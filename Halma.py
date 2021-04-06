@@ -63,6 +63,19 @@ class Halma():
         self.current_player = 1  # might want to track this another way
 
         self.board_view.mainloop()  # Begin tkinter main loop
+        
+    def detectWin(self, init_board):
+        """ Checks to see if current player
+            has won
+
+            Parameters:
+                init_board (???): The board object
+
+            Returns:
+                True if the current player has
+                won; False otherwise
+        """
+        pass
 
     def moveGenerator(self, player_turn):
         """ Generates all legal moves for the 
