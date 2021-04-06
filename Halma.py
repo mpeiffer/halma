@@ -64,12 +64,12 @@ class Halma():
 
         self.board_view.mainloop()  # Begin tkinter main loop
         
-    def detectWin(self, init_board):
+    def detectWin(self):
         """ Checks to see if current player
             has won
 
             Parameters:
-                init_board (???): The board object
+                None
 
             Returns:
                 True if the current player has
