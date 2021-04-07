@@ -151,6 +151,7 @@ class Halma():
         for coordinate, player in self.board:
             if player == player_turn:
                 pieces.append(coordinate)
+        return pieces
 
     def getAdjacent(self, tile):
         """ Helper method for move generator. Gets all pieces adjacent to 
