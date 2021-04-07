@@ -163,18 +163,55 @@ class Halma():
             Returns:
                 A list of pieces adjacent to the current piece
         """
-        pass
+        adjacent = []
+        legal_adjacent = []
 
+        # Get row and column from given tile
+        row = tile[0]
+        col = tile[1]
+        
+        # Add possible coordinates to list of adjacent coordinates  
+        adjacent.append((row - 1, col))
+        adjacent.append((row - 1, col + 1))
+        adjacent.append((row - 1, col - 1))
+        adjacent.append((row, col - 1))
+        adjacent.append((row, col + 1))
+        adjacent.append((row + 1, col - 1))
+        adjacent.append((row + 1, col))
+        adjacent.append((row + 1, col + 1))
+
+        # Remove illegal coordinates from list
+        for coordinate in adjacent:
+            if inBoard(coordinate):
+                legal_adjacent.append(coordinate)
+
+        return legal_adjacent
+
+    def inBoard(self, tile):
+        """ Helper method for getAdjacent
+
+            Parameters:
+                tile (tuple): A tuple representing the 
+                              coordinates of the tile
+                              to be checked
+
+            Returns: 
+                True if the coordinates are legal; False otherwise
+        """
+        row = tile[0]
+        col = tile[1]
+
+        return row > 0 and col > 0 and row < b_size - 1 and col < b_size - 1
 
     def isEmpty(self, tile):
         """ Helper method for move generator. Checks if a tile is empty
 
         Parameters:
-            tile (int): An integer representing the coordinates of
+            tile (tuple): A tuple representing the coordinates of
                         the current tile
 
         Returns:
-            True if tile is empty; false otherwise
+            True if tile is empty; False otherwise
         """
         if self.board[tile] == EMPTY:
             return True
