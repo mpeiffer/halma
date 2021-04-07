@@ -152,7 +152,7 @@ class Halma():
             Returns:
                 True if square is empty; False otherwise
         """
-        if self.board[tile][2] == 0:
+        if tile in self.board[EMPTY]:
             return True
 
         return False
