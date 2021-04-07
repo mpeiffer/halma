@@ -54,13 +54,13 @@ class Halma():
             for col in range(b_size):
 
                 if row + col < 4:
-                    board[row][col] = (row, col, 2)
+                    board[(row, col)] = (row, col, 2)
                     red_camp.append((row, col, 2))
                 elif row + col > 2 * (b_size - 3):
-                    board[row][col] = (row, col, 1)
+                    board[(row, col)]= (row, col, 1)
                     green_camp.append((row, col, 1))
                 else:
-                    board[row][col] = (row, col, 0)
+                    board[(row, col)] = (row, col, 0)
 
         self.redcamp = red_camp
         self.greencamp = green_camp
