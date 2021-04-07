@@ -165,6 +165,22 @@ class Halma():
         """
         pass
 
+
+    def isEmpty(self, tile):
+        """ Helper method for move generator. Checks if a tile is empty
+
+        Parameters:
+            tile (int): An integer representing the coordinates of
+                        the current tile
+
+        Returns:
+            True if tile is empty; false otherwise
+        """
+        if self.board[tile] == EMPTY:
+            return True
+
+        return False
+
     def action(self, move):
         """ Generates a new board representing the
             move the player took
