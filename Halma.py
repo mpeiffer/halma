@@ -85,7 +85,35 @@ class Halma():
                 True if the current player has
                 won; False otherwise
         """
-        pass
+                # Check if red player won
+
+        for tile in self.greencamp:
+            # Case one; camp is empty, no player has won
+            if self.board[tile][2] == 0:
+                # Stop checking
+                return False, None
+
+            # Case two; green tile in green camp
+            elif self.board[tile][2] == 1:
+                return False, None
+            
+            # Case three; red player won
+            else:
+                return True, 2
+
+        # Check if green player won
+        for tile in self.redcamp:
+            # Case one; camp is empty, no player has won
+            if self.board[tile][2] == 0:
+                return False, None
+            
+            # Case two; red tile in red camp
+            elif self.board[tile][2] == 2:
+                return False, None
+            
+            # Case three; green player won
+            else:
+                return True, 1
 
     def moveGenerator(self, player_turn):
         """ Generates all legal moves for the 
