@@ -5,6 +5,10 @@ import time
 
 from gameBoard import Board
 
+EMPTY = 0
+GREEN = 1
+RED = 2
+
 def main(argv):
     # Process and pass along command line parameters
     if __name__ == "__main__":
@@ -45,7 +49,11 @@ class Halma():
         self.t_limit = t_limit
 
         # Create initial board
-        board = {}
+        board = {
+            EMPTY : {},
+            GREEN : {},
+            RED : {}
+        }
         
         red_camp = []
         green_camp = []
@@ -54,13 +62,13 @@ class Halma():
             for col in range(b_size):
 
                 if row + col < 4:
-                    board[(row, col)] = (row, col, 2)
-                    red_camp.append((row, col, 2))
+                    board[RED][(row, col)] = ((row, col))
+                    red_camp.append((row, col))
                 elif row + col > 2 * (b_size - 3):
-                    board[(row, col)]= (row, col, 1)
+                    board[GREEN][(row, col)] = (row, col)
                     green_camp.append((row, col, 1))
                 else:
-                    board[(row, col)] = (row, col, 0)
+                    board[(EMPTY][(row, col)] = ((row, col))
 
         self.redcamp = red_camp
         self.greencamp = green_camp
@@ -90,32 +98,32 @@ class Halma():
 
         for tile in self.greencamp:
             # Case one; camp contains an empty tile, no player has won
-            if self.board[tile][2] == 0:
+            if tile in self.board[EMPTY]:
                 # Stop checking
-                return False, None
+                return False, EMPTY
 
             # Case two; camp contains a green tile; red cannot have won
-            elif self.board[tile][2] == 1:
+            elif tile in self.board[GREEN]:
                 return False, None
             
             # Case three; all tiles in green camp are red
             else:
-                return True, 2
+                return True, RED
 
         # Check if green player won
 
         for tile in self.redcamp:
             # Case one; camp contains an empty tile, no player has won
-            if self.board[tile][2] == 0:
+            if tile in self.board[EMPTY]:
                 return False, None
             
             # Case two; camp contains a red tile; green cannot have won
-            elif self.board[tile][2] == 2:
-                return False, None
+            elif tile in self.board[RED]:
+                return False, EMPTY
             
             # Case three; all tiles in red camp are green
             else:
-                return True, 1
+                return True, GREEN
 
     def moveGenerator(self, player_turn):
         """ Generates all legal moves for the 
