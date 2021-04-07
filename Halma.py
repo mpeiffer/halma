@@ -82,8 +82,9 @@ class Halma():
                 None
 
             Returns:
-                True if the current player has
-                won; False otherwise
+                A tuple containing True if the current
+                player has won along with which player won;
+                or False otherwise
         """
                 # Check if red player won
 
