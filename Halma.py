@@ -122,18 +122,32 @@ class Halma():
             current player; Note that pieces cannot move backward
 
             Parameters: 
-                player_turn (str): A string representing
+                player_turn (int): An int representing
                                    the current player
-                                   (i.e red/green)
+                                   (i.e 1 or 2)
 
             Returns:
                 A list of all possible legal moves
         """
-        # Check for empty adjacent squares
-        
+        # Add empty squares to list of legal moves
+
         # If adjacent square is not empty; calculate legal jumps
 
         pass
+
+    def isEmpty(self, tile):
+        """ Recursive helper method for move Generator
+            
+            Parameters:
+                tile (tuple): The coordinates of the current piece
+
+            Returns:
+                True if square is empty; False otherwise
+        """
+        if self.board[tile][2] == 0:
+            return True
+
+        return False
 
     def action(self, move):
         """ Generates a new board representing the
