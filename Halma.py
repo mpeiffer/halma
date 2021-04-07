@@ -50,9 +50,7 @@ class Halma():
 
         # Create initial board
         board = {
-            EMPTY : {},
-            GREEN : {},
-            RED : {}
+
         }
         
         red_camp = []
@@ -62,13 +60,13 @@ class Halma():
             for col in range(b_size):
 
                 if row + col < 4:
-                    board[RED][(row, col)] = ((row, col))
+                    board[(row, col)] = RED
                     red_camp.append((row, col))
                 elif row + col > 2 * (b_size - 3):
-                    board[GREEN][(row, col)] = (row, col)
+                    board[(row, col)] = GREEN
                     green_camp.append((row, col, 1))
                 else:
-                    board[(EMPTY][(row, col)] = ((row, col))
+                    board[(row, col)] = EMPTY
 
         self.redcamp = red_camp
         self.greencamp = green_camp
@@ -98,12 +96,12 @@ class Halma():
 
         for tile in self.greencamp:
             # Case one; camp contains an empty tile, no player has won
-            if tile in self.board[EMPTY]:
+            if self.board[tile] == EMPTY:
                 # Stop checking
                 return False, EMPTY
 
             # Case two; camp contains a green tile; red cannot have won
-            elif tile in self.board[GREEN]:
+            elif self.board[tile] == GREEN:
                 return False, None
             
             # Case three; all tiles in green camp are red
@@ -114,11 +112,11 @@ class Halma():
 
         for tile in self.redcamp:
             # Case one; camp contains an empty tile, no player has won
-            if tile in self.board[EMPTY]:
+            if self.board[tile] == EMPTY:
                 return False, None
             
             # Case two; camp contains a red tile; green cannot have won
-            elif tile in self.board[RED]:
+            elif self.board[tile] == RED:
                 return False, EMPTY
             
             # Case three; all tiles in red camp are green
@@ -152,7 +150,7 @@ class Halma():
             Returns:
                 True if square is empty; False otherwise
         """
-        if tile in self.board[EMPTY]:
+        if self.board[tile] == EMPTY:
             return True
 
         return False
