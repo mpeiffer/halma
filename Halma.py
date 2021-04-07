@@ -64,6 +64,86 @@ class Halma():
 
         self.board_view.mainloop()  # Begin tkinter main loop
         
+        # Specify camps
+        self.red_camp = getRedCamp(b_size)       
+        self.green_camp = getGreenCamp(b_size)
+
+    def getRedCamp(self, b_size):
+        """ Specifies all camp squares belonging 
+            to the red player
+
+            Parameters:
+                b_size (int): The board size
+
+            Returns:
+                A list of ordered pairs representing
+                coordinates of every square for the
+                red player camp
+                
+        """
+        row = 0
+        col = 0
+        max_row = 4
+        max_col = 4
+
+        red_camp = []
+
+        # Add more pieces for larger boards
+        if b_size == 10 or b_size == 16:
+            max_row += 1
+            max_col += 1
+
+        while row < max_row:
+            while col < max_col:
+                red_camp.append((row, col))
+                col += 1
+
+            col = 0
+            row += 1
+            # Keeps track of diagonal
+            max_col -= 1
+
+        return red_camp
+
+    def getGreenCamp(self, b_size):
+        """ Specifies all camp squares belonging 
+            to the green player
+
+            Parameters:
+                b_size (int): The board size
+
+            Returns:
+                A list of ordered pairs representing
+                coordinates of every square for the
+                green player camp
+                
+        """
+        # Start at last indicies in board
+        row = b_size - 1
+        col = b_size - 1
+        # Specify end of perimeter
+        min_row = row - 4
+        min_col = col - 4
+
+        green_camp = []
+        
+        if b_size == 10 or b_size == 16:
+            min_row -= 1
+            min_col -= 1 
+
+        while row > min_row:
+            while col > min_col:
+                green_camp.append((row, col))
+                col -= 1
+
+            col = b_size - 1
+            row -= 1
+            # Keeps track of diagonal
+            min_col += 1
+
+        return green_camp
+
+
     def detectWin(self):
         """ Checks to see if current player
             has won
