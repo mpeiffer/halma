@@ -131,27 +131,38 @@ class Halma():
                                    (i.e 1 or 2)
 
             Returns:
-                A list of all possible legal moves
+                A dictionary of all possible legal moves for each piece
         """
-        # Add empty squares to list of legal moves
-
-        # If adjacent square is not empty; calculate legal jumps
-
         pass
 
-    def isEmpty(self, tile):
-        """ Recursive helper method for move Generator
+    def getPlayerPieces(self, player_turn):
+        """ Helper method for moveGenerator. Gets the coordinates
+            of all player pieces.
+
+            Parameters:
+                player_turn (int): An integer representing the player turn
+
+            Returns:
+                A list of all player pieces
+        """
+        pieces = []
+
+        # Iterate through board to find pieces
+        for coordinate, player in self.board:
+            if player == player_turn:
+                pieces.append(coordinate)
+
+    def getAdjacent(self, tile):
+        """ Helper method for move generator. Gets all pieces adjacent to 
+            the current piece
             
             Parameters:
                 tile (tuple): The coordinates of the current piece
 
             Returns:
-                True if square is empty; False otherwise
+                A list of pieces adjacent to the current piece
         """
-        if self.board[tile] == EMPTY:
-            return True
-
-        return False
+        pass
 
     def action(self, move):
         """ Generates a new board representing the
