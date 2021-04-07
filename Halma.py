@@ -49,9 +49,7 @@ class Halma():
         self.t_limit = t_limit
 
         # Create initial board
-        board = {
-
-        }
+        board = {}
         
         red_camp = []
         green_camp = []
