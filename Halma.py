@@ -86,7 +86,7 @@ class Halma():
                 player has won along with which player won;
                 or False otherwise
         """
-                # Check if red player won
+        # Check if red player won
 
         for tile in self.greencamp:
             # Case one; camp contains an empty tile, no player has won
@@ -103,6 +103,7 @@ class Halma():
                 return True, 2
 
         # Check if green player won
+
         for tile in self.redcamp:
             # Case one; camp contains an empty tile, no player has won
             if self.board[tile][2] == 0:
@@ -118,7 +119,7 @@ class Halma():
 
     def moveGenerator(self, player_turn):
         """ Generates all legal moves for the 
-            current player
+            current player; Note that pieces cannot move backward
 
             Parameters: 
                 player_turn (str): A string representing
@@ -128,6 +129,10 @@ class Halma():
             Returns:
                 A list of all possible legal moves
         """
+        # Check for empty adjacent squares
+        
+        # If adjacent square is not empty; calculate legal jumps
+
         pass
 
     def action(self, move):
