@@ -50,17 +50,17 @@ class Halma():
             for col in range(b_size):
 
                 if row + col < 4:
-                    board[row][col] = (row, col, 2)
+                    board[row][col] = (row, col, "red")
                 elif row + col > 2 * (b_size - 3):
-                    board[row][col] = (row, col, 1)
+                    board[row][col] = (row, col, "green")
                 else:
-                    board[row][col] = (row, col, 0)
+                    board[row][col] = (row, col, "")
 
         self.gameMessage = "Welcome to Halma!"  # default message
         self.board_view = Board(board, self.gamemessage)
         self.board = board
-        # intial player is green represented as 1
-        self.current_player = 1  # might want to track this another way
+        # intial player is green
+        self.current_player = "green"  # might want to track this another way
 
         self.board_view.mainloop()  # Begin tkinter main loop
         
@@ -95,7 +95,7 @@ class Halma():
 
         while row < max_row:
             while col < max_col:
-                red_camp.append((row, col))
+                red_camp.append((row, col, "red"))
                 col += 1
 
             col = 0
@@ -133,7 +133,7 @@ class Halma():
 
         while row > min_row:
             while col > min_col:
-                green_camp.append((row, col))
+                green_camp.append((row, col, "green"))
                 col -= 1
 
             col = b_size - 1
@@ -146,7 +146,8 @@ class Halma():
 
     def detectWin(self):
         """ Checks to see if current player
-            has won
+            has won; player has won if all
+            pieces are in the opponent's camp
 
             Parameters:
                 None
