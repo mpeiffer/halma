@@ -95,7 +95,7 @@ class Halma():
 
         while row < max_row:
             while col < max_col:
-                red_camp.append((row, col, "red"))
+                red_camp.append((row, col))
                 col += 1
 
             col = 0
@@ -133,7 +133,7 @@ class Halma():
 
         while row > min_row:
             while col > min_col:
-                green_camp.append((row, col, "green"))
+                green_camp.append((row, col))
                 col -= 1
 
             col = b_size - 1
