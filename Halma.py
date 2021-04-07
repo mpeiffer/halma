@@ -50,17 +50,17 @@ class Halma():
             for col in range(b_size):
 
                 if row + col < 4:
-                    board[row][col] = (row, col, "red")
+                    board[row][col] = (row, col, 2)
                 elif row + col > 2 * (b_size - 3):
-                    board[row][col] = (row, col, "green")
+                    board[row][col] = (row, col, 1
                 else:
-                    board[row][col] = (row, col, "")
+                    board[row][col] = (row, col, 0)
 
         self.gameMessage = "Welcome to Halma!"  # default message
         self.board_view = Board(board, self.gamemessage)
         self.board = board
-        # intial player is green
-        self.current_player = "green"  # might want to track this another way
+        # intial player is green; represented as 1
+        self.current_player = 1  # might want to track this another way
 
         self.board_view.mainloop()  # Begin tkinter main loop
         
