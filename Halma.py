@@ -142,7 +142,7 @@ class Halma():
             legal_moves[piece] = []
 
             # Get all tiles adjacent to player pieces
-            adjacent_pieces = self.getAdjacentPieces(piece))
+            adjacent_pieces = self.getAdjacentPieces(piece)
             
             # Check if adjacent tiles are empty or non-empty
             for position, tile in adjacent_pieces.items():
