@@ -248,7 +248,7 @@ class Halma():
 
         return False
 
-    def action(self, move):
+    def action(self, move, player):
         """ Generates a new board representing the
             move the player took
 
@@ -256,12 +256,41 @@ class Halma():
                 move (str): A string representing the 
                             move the player made
                             (i.e. "a3->b4")
+                player (int): An integer representing the 
+                              current player
 
             Returns:
                 A new board object reflecting the action.
                 If the action is not legal, an error is 
                 returned
         """
-        pass
+        # May want a better way to convert user input here
+        to_num = {
+            'a' : 0,
+            'b' : 1,
+            'c' : 2,
+            'd' : 3,
+            'e' : 4,
+            'f' : 5,
+            'g' : 6,
+            'h' : 7,
+            'i' : 8,
+            'j' : 9,
+            'k' : 10,
+            'l' : 11,
+            'm' : 12,
+            'n' : 13,
+            'o' : 14,
+            'p' : 15
+        } 
 
+        # Convert user input to coordinates
+        coords = (to_num[move[0]], int(move[1])) 
 
+        # Get legal moves for current player
+        legal = moveGenerator(player)
+
+        if coords in legal.values():
+            self.board[coords] = player
+        else:
+            print('That move is invalid!')
