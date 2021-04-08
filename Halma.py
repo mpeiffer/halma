@@ -133,7 +133,20 @@ class Halma():
             Returns:
                 A dictionary of all possible legal moves for each piece
         """
-        pass
+        legal_moves = {
+                }
+
+        player_pieces = self.getPlayerPieces(player_turn)
+
+        # Get all tiles adjacent to player pieces
+        for piece in player_pieces:
+            adjacent_peices = self.getAdjacentPieces(piece))
+            # Check if adjacent tiles are empty or non-empty
+            for piece in adjacent_pieces:
+                if isEmpty(piece):
+                    pass
+                else:
+                    pass
 
     def getPlayerPieces(self, player_turn):
         """ Helper method for moveGenerator. Gets the coordinates
