@@ -133,18 +133,23 @@ class Halma():
             Returns:
                 A dictionary of all possible legal moves for each piece
         """
-        legal_moves = {
-                }
-
+        legal_moves = {}
         player_pieces = self.getPlayerPieces(player_turn)
 
-        # Get all tiles adjacent to player pieces
         for piece in player_pieces:
-            adjacent_peices = self.getAdjacentPieces(piece))
+
+            # Accumulate all legal moves for a specific piece
+            legal_moves[piece] = []
+
+            # Get all tiles adjacent to player pieces
+            adjacent_pieces = self.getAdjacentPieces(piece))
+            
             # Check if adjacent tiles are empty or non-empty
-            for piece in adjacent_pieces:
-                if isEmpty(piece):
-                    pass
+            for tile in adjacent_pieces:
+                
+                if isEmpty(tile):
+                    legal_moves[piece].append(tile) 
+
                 else:
                     pass
 
