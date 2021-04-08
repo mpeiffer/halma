@@ -94,7 +94,7 @@ class Halma():
 
         for tile in self.greencamp:
             # Case one; camp contains an empty tile, no player has won
-            if self.board[tile] == EMPTY:
+            if self.isEmpty(tile):
                 # Stop checking
                 return False, None
 
@@ -110,7 +110,7 @@ class Halma():
 
         for tile in self.redcamp:
             # Case one; camp contains an empty tile, no player has won
-            if self.board[tile] == EMPTY:
+            if self.isEmpty(tile):
                 return False, None
             
             # Case two; camp contains a red tile; green cannot have won
