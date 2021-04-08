@@ -145,13 +145,16 @@ class Halma():
             adjacent_pieces = self.getAdjacentPieces(piece))
             
             # Check if adjacent tiles are empty or non-empty
-            for tile in adjacent_pieces:
+            for position, tile in adjacent_pieces.items():
                 
                 if isEmpty(tile):
                     legal_moves[piece].append(tile) 
 
                 else:
-                    pass
+                    jump_tile = self.getAdjacentPieces(piece, position)
+                    legal_moves[piece].append(jump_tile)
+                    
+        return legal_moves
 
     def getPlayerPieces(self, player_turn):
         """ Helper method for moveGenerator. Gets the coordinates
@@ -171,37 +174,46 @@ class Halma():
                 pieces.append(coordinate)
         return pieces
 
-    def getAdjacent(self, tile):
+    def getAdjacent(self, tile, pos=None):
         """ Helper method for move generator. Gets all pieces adjacent to 
             the current piece
             
             Parameters:
                 tile (tuple): The coordinates of the current piece
+                pos (str): An optional parameter which specifies a 
+                           specific location for desired adjacent piece
 
             Returns:
-                A list of pieces adjacent to the current piece
+                A dictionary containing the direction and coordinates of the
+                adjacent pieces OR if pos is specified returns only the
+                coordinates for that specific piece
         """
-        adjacent = []
-        legal_adjacent = []
+        adjacent = {}
+        legal_adjacent = {}
 
         # Get row and column from given tile
         row = tile[0]
         col = tile[1]
-        
+       
         # Add possible coordinates to list of adjacent coordinates  
-        adjacent.append((row - 1, col))
-        adjacent.append((row - 1, col + 1))
-        adjacent.append((row - 1, col - 1))
-        adjacent.append((row, col - 1))
-        adjacent.append((row, col + 1))
-        adjacent.append((row + 1, col - 1))
-        adjacent.append((row + 1, col))
-        adjacent.append((row + 1, col + 1))
+        adjacent["upper_midle"] = (row - 1, col)
+        adjacent["upper_right"] = (row - 1, col + 1)
+        adjacent["upper_left"] = (row - 1, col - 1)
+        adjacent["middle_left"] = (row, col - 1)
+        adjacent["middle_right"] = (row, col + 1)
+        adjacent["lower_left"] = (row + 1, col - 1)
+        adjacent["lower_middle"] = (row + 1, col)
+        adjacent["lower_right"] = (row + 1, col + 1)
 
         # Remove illegal coordinates from list
-        for coordinate in adjacent:
+        for position, coordinate in adjacent.items():
             if inBoard(coordinate):
-                legal_adjacent.append(coordinate)
+                legal_adjacent[position] = coordinate
+
+        # Check if a position was specified
+        if pos != None:
+            # Return coordinates for a jump move
+            return legal_adjacent[pos]
 
         return legal_adjacent
 
