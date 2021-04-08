@@ -1,47 +1,11 @@
-# Python imports
-import sys
-# should be needed to track time limits
+# Python Standard Library imports
 import time
-
-from gameBoard import Board
 
 EMPTY = 0
 GREEN = 1
 RED = 2
 
-def main(argv):
-    # Process and pass along command line parameters
-    if __name__ == "__main__":
-
-        # Catch missing parameters
-        if len(sys.argv) < 3:
-            # h player is optional for when we start to code the AI
-            print("usage: halma <b-size> <t-limit> [<h-player>]")
-            sys.exit(-1)
-
-        # Unpack params into variables
-        b_size, t_limit = sys.argv[1:3]
-        h_player = sys.argv[3] if len(sys.argv) == 4 else None
-
-        # Validate b_size and t_limit
-        if b_size not in ["8", "10", "16"]:
-            print("error: <b-size> and should be [" + ", ".join("8, 10, or 16") + "]")
-            sys.exit(-1)
-
-        if not b_size.isdigit() or not t_limit.isdigit():
-            print("error: <b-size> and <t-limit> should be integers")
-            sys.exit(-1)
-
-        b_size = int(b_size)
-        t_limit = int(t_limit)
-
-    # todo validate the H-player argument unnecessary right now
-
-    halmaGame = Halma(b_size, t_limit)
-
-
-# Class that handles game play and launches the GUI
-
+# Class that handles game play
 class Halma():
     def __init__(self, b_size, t_limit):
 
@@ -50,10 +14,9 @@ class Halma():
 
         # Create initial board
         board = {}
-        
         red_camp = []
         green_camp = []
-        
+
         for row in range(b_size):
             for col in range(b_size):
 
@@ -68,14 +31,12 @@ class Halma():
 
         self.redcamp = red_camp
         self.greencamp = green_camp
-        
-        self.gameMessage = "Welcome to Halma!"  # default message
-        self.board_view = Board(board, self.gameMessage)
-        self.board = board
-        # intial player is green; represented as 1
-        self.current_player = 1  # might want to track this another way
 
-        self.board_view.mainloop()  # Begin tkinter main loop
+        self.gameMessage = "Welcome to Halma!"  # default message
+        self.board = board
+
+        # intial player is green; 
+        self.current_player = GREEN  
                                        
     def detectWin(self):
         """ Checks to see if current player
