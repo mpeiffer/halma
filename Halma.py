@@ -70,7 +70,7 @@ class Halma():
         self.greencamp = green_camp
         
         self.gameMessage = "Welcome to Halma!"  # default message
-        self.board_view = Board(board, self.gamemessage)
+        self.board_view = Board(board, self.gameMessage)
         self.board = board
         # intial player is green; represented as 1
         self.current_player = 1  # might want to track this another way
