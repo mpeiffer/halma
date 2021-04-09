@@ -110,10 +110,10 @@ class Halma():
                     legal_moves[piece].append(tile)
 
                 else:
-                    jump_tile = self.getAdjacentPieces(tile, position)
-    
-                    if self.isEmpty(jump_tile):
-                        legal_moves[piece].append(jump_tile)
+                    jump_tile = self.getAdjacentPieces(tile)
+                    print(jump_tile) 
+                    #if self.isEmpty(jump_tile):
+                        #legal_moves[piece].append(jump_tile)
 
         return legal_moves
 
@@ -133,18 +133,16 @@ class Halma():
                 pieces.append(coordinate)
         return pieces
 
-    def getAdjacentPieces(self, tile, pos=None):
+    def getAdjacentPieces(self, tile):
         """ Helper method for move generator. Gets all pieces adjacent to
                 the current piece
 
                 Parameters:
                     tile (tuple): The coordinates of the current piece
-                    pos (str): An optional parameter which specifies a
-                               specific location for desired adjacent piece
+                
                 Returns:
                     A dictionary containing the direction and coordinates of the
-                    adjacent pieces OR if pos is specified returns only the
-                    coordinates for that specific piece
+                    adjacent pieces 
             """
         adjacent = {}
         legal_adjacent = {}
@@ -167,14 +165,6 @@ class Halma():
         for position, coordinate in adjacent.items():
             if self.inBoard(coordinate):
                 legal_adjacent[position] = coordinate
-
-        # Check if a position was specified
-        if pos != None and pos in legal_adjacent:
-            # Return coordinates for a jump move
-            return legal_adjacent[pos]
-
-        elif pos not in legal_adjacent:
-            return ()
 
         return legal_adjacent
 
