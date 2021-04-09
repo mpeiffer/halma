@@ -163,7 +163,7 @@ class Halma():
 
         # Remove illegal coordinates from list
         for position, coordinate in adjacent.items():
-            if inBoard(coordinate):
+            if self.inBoard(coordinate):
                 legal_adjacent[position] = coordinate
 
         # Check if a position was specified
