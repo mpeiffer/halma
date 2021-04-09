@@ -169,7 +169,7 @@ class Halma():
                 legal_adjacent[position] = coordinate
 
         # Check if a position was specified
-        if pos != None:
+        if pos != None and pos in legal_adjacent:
             # Return coordinates for a jump move
             return legal_adjacent[pos]
 
