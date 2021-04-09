@@ -106,7 +106,7 @@ class Halma():
             # Check if adjacent tiles are empty or non-empty
             for position, tile in adjacent_pieces.items():
 
-                if isEmpty(tile):
+                if self.isEmpty(tile):
                     legal_moves[piece].append(tile)
 
                 else:
