@@ -185,7 +185,7 @@ class Halma():
         row = tile[0]
         col = tile[1]
 
-        return row > 0 and col > 0 and row < b_size - 1 and col < b_size - 1
+        return row > 0 and col > 0 and row < self.b_size - 1 and col < self.b_size - 1
 
     def isEmpty(self, tile):
         """ Helper method for move generator. Checks if a tile is empty
