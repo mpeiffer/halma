@@ -1,9 +1,9 @@
 # Python Standard Library
 import sys
 import time
-
-from halmaclass import Halma
 from boardclass import Board
+from halmaclass import Halma
+
 
 # Catch any missing parameters
 if len(sys.argv) < 3:
@@ -31,6 +31,5 @@ t_limit = int(t_limit)
 # todo validate the H-player argument unnecessary right now
 
 halmaGame = Halma(b_size, t_limit)
-board = Board(halmaGame, halmaGame.gameMessage)
-board.mainloop()  # Begin tkinter main loop
-
+gameBoard = Board(halmaGame, halmaGame.gameMessage)
+gameBoard.mainloop()  # Begin tkinter main loop
