@@ -1,5 +1,6 @@
 # Python Standard Library imports
 import tkinter as tk
+from typing import Dict, List, Any
 
 
 class Board(tk.Tk):
@@ -19,6 +20,27 @@ class Board(tk.Tk):
         self.wm_title("Halma!!!!")
         self.resizable(False, False)
         self.buttons = {}
+        self.clicked = False
+        self.secondClicked = ()
+
+        self.asletter = {
+            0: "a",
+            1: "b",
+            2: "c",
+            3: "d",
+            4: "e",
+            5: "f",
+            6: "g",
+            7: "h",
+            8: "i",
+            9: "j",
+            10: "k",
+            11: "l",
+            12: "m",
+            13: "n",
+            14: "o",
+            15: "p",
+        }
 
         for elem in game.board:
             if game.board[elem] == 2:
@@ -43,12 +65,15 @@ class Board(tk.Tk):
         self.displaymessage.grid(row=len(game.board), column=0, pady=2, padx=2, )
 
         def onclick(row, col):
-            if game.detectWin() == (True, 2):
-                self.currentmessage = "Red wins!!!!!!!!!"
-                self.displaymessage.config(text=self.currentmessage)
-            elif game.detectWin() == (True, 1):
-                self.currentmessage = "Red wins!!!!!!!!!"
-                self.displaymessage.config(text=self.currentmessage)
+            if not self.clicked:
+                self.clicked = (row, col)
             else:
-                if not self.avaliablemoves:
-                    self.avaliablemoves = game.moveGenerator()
+                self.secondClicked = (row, col)
+
+                self.current_move = self.asletter[self.clicked[0]] + str(self.clicked[1]) + "->" + \
+                                    self.asletter[self.secondClicked[0]] + str(self.secondClicked[1])
+
+                game.action(self.current_move, game.current_player)
+
+                if game.gameMessage == 'That move is invalid!':
+                    Board(game, game.gameMessage)
