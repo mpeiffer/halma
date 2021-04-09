@@ -111,7 +111,7 @@ class Halma():
 
                 else:
                     jump_tile = self.getAdjacentPieces(tile, position)
-                    print(jump_tile + "jump:")
+    
                     if self.isEmpty(jump_tile):
                         legal_moves[piece].append(jump_tile)
 
@@ -172,6 +172,9 @@ class Halma():
         if pos != None and pos in legal_adjacent:
             # Return coordinates for a jump move
             return legal_adjacent[pos]
+
+        elif pos not in legal_adjacent:
+            return ()
 
         return legal_adjacent
 
