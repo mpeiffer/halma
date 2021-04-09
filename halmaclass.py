@@ -126,7 +126,7 @@ class Halma():
         pieces = []
 
         # Iterate through board to find pieces
-        for coordinate, player in self.board:
+        for coordinate, player in self.board.items():
             if player == player_turn:
                 pieces.append(coordinate)
         return pieces
