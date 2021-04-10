@@ -114,11 +114,10 @@ class Halma():
                     tile = self.getAdjacentPieces(tile)
 
                     while jumping:
+                        
+                        tile = self.jump(position, tile)
 
-                        if position in tile:
-                            tile = self.jump(position, tile[position])
-
-                        if tile == None or position not in tile:
+                        if tile == None:
                             jumping = False
                         else:
 
@@ -128,12 +127,14 @@ class Halma():
         return legal_moves
 
     def jump(self, position, starting_tile):
-        jump_tile = self.getAdjacentPieces(starting_tile)
         
-        if position in jump_tile and self.isEmpty(jump_tile[position]):
-            return jump_tile[position]
-        else:
-            return None
+        if position in starting_tile:
+            jump_tile = self.getAdjacentPieces(starting_tile[position])
+        
+            if position in jump_tile and self.isEmpty(jump_tile[position]):
+                return jump_tile[position]
+            else:
+                return None
 
     def getPlayerPieces(self, player_turn):
         """ Helper method for moveGenerator. Gets the coordinates
