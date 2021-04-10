@@ -114,13 +114,14 @@ class Halma():
 
                     while jumping:
                         jump_tile = self.jump(position, tile)
-                        
-                        print(f"Found {position} : {jump_tile[position]}")
-
+                         
                         if jump_tile == None:
                             jumping = False
 
                         else:
+
+                            print(f"Found {position} : {jump_tile[position]}")
+
                             # Add to list of legal moves
                             legal_moves[piece].append(jump_tile)
 
