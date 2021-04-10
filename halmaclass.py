@@ -112,7 +112,7 @@ class Halma():
                 else:
                     jumping = True
                     start_tile = self.getAdjacentPieces(tile)
-
+                    print(f"start tile {start_tile}")
                     while jumping:   
                         tile = self.jump(position, start_tile)
                         print(f"1 {tile}")
