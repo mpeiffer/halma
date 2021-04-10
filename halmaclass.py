@@ -117,16 +117,17 @@ class Halma():
 
                         jump_tile = self.jump(position, tile)
 
-                        if jump_tile != None:
-                            print(jump_tile)
-                            legal_moves[piece].append(jump_tile)
-                            
-                            if position in jump_tile:
-                                tile = jump_tile[position]
-                        else:
-                            print("stop")
+                        if jump_tile == None:
                             jumping = False
 
+                        else:
+                            legal_moves[piece].append(jump_tile)
+                            
+                            if position in tile:
+                                tile = jump_tile[position]
+                            
+                            else:
+                                jumping = False
         return legal_moves
 
     def jump(self, position, starting_tile):
