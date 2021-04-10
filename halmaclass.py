@@ -120,10 +120,6 @@ class Halma():
                         if jump_tile == None:
                             jumping = False
 
-                        # Only jump over non-empty tiles
-                        elif self.isEmpty(jump_tile):
-                            jumping = False
-
                         else:
                             legal_moves[piece].append(jump_tile)
                             new_tile = self.getAdjacentPieces(jump_tile)
@@ -145,6 +141,10 @@ class Halma():
             Returns:
                 A legal tile coordinate to jump to
         """
+        # Only jump over non-empty tiles
+        if self.isEmpty(starting_tile):
+            return None
+
         jump_tile = self.getAdjacentPieces(starting_tile)
         
         if position in jump_tile and self.isEmpty(jump_tile[position]):
