@@ -114,7 +114,9 @@ class Halma():
 
                     while jumping:
                         jump_tile = self.jump(position, tile)
-                    
+                        
+                        print(f"Found {position} : {jump_tile[position]}")
+
                         if jump_tile == None:
                             jumping = False
 
