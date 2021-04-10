@@ -124,7 +124,7 @@ class Halma():
 
         return legal_moves
 
-    def jump(position, starting_tile):
+    def jump(self, position, starting_tile):
         jump_tile = self.getAdjacentPieces(starting_tile)
         
         if position in jump_tile and self.isEmpty(jump_tile[position]):
