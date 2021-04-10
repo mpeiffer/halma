@@ -111,17 +111,17 @@ class Halma():
 
                 else:
                     jumping = True
-                    start_tile = self.getAdjacentPieces(tile)
-                    print(f"start tile {start_tile}")
+                    tile = self.getAdjacentPieces(tile)
+
                     while jumping:   
-                        tile = self.jump(position, start_tile)
-                        print(f"1 {tile}")
+                        tile = self.jump(position, tile[position])
+                        
                         if jump == None:
                             jumping = False
                         else:
                             legal_moves[piece].append(tile)
                             tile = self.getAdjacentPieces(tile)
-                            print(f"2 {tile}")
+                            
         return legal_moves
 
     def jump(self, position, starting_tile):
