@@ -118,7 +118,7 @@ class Halma():
                         if position in tile:
                             tile = self.jump(position, tile[position])
 
-                        if jump == None or position not in tile:
+                        if tile == None or position not in tile:
                             jumping = False
                         else:
 
