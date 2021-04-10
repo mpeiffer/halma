@@ -111,24 +111,34 @@ class Halma():
 
                 else:
                     jumping = True
-                    tile = self.getAdjacentPieces(tile)
 
                     while jumping:
-                        print(f"Initialized jump for {tile}")
-                        tile = self.jump(position, tile)
-                        print(f"Got back {tile}, {position}")
-                        
-                        if tile == None:
-                            print("Stopped jumping")
+                        jump_tile = self.jump(position, tile)
+                    
+                        if jump_tile == None:
                             jumping = False
+
                         else:
-                            legal_moves[piece].append(tile)
-                            tile = self.getAdjacentPieces(tile)
-                            
+                            # Add to list of legal moves
+                            legal_moves[piece].append(jump_tile)
+
+                            # Get tiles adjacent to the jump piece
+                            tile = self.getAdjacentPieces(jump_tile)
+                    
+                
         return legal_moves
 
     def jump(self, position, starting_tile):
-        
+        """ Calculates a legal jump tile
+
+            Parameters:
+                position (str): The direction an adjacent tile is facing
+                starting_tile (tuple): The non-empty adjacent tile to   
+                                       jump over
+
+            Returns:
+                A legal tile coordinate to jump to
+        """
         if position in starting_tile:
             jump_tile = self.getAdjacentPieces(starting_tile[position])
         
