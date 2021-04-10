@@ -114,7 +114,7 @@ class Halma():
 
                     while jumping:
                         jump_tile = self.jump(position, tile)
-                         
+                        print(jump_tile) 
                         if jump_tile == None:
                             jumping = False
 
