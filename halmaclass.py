@@ -110,28 +110,9 @@ class Halma():
                     legal_moves[piece].append(tile)
 
                 else:
-                    jumping = True
+                    jump_tile = self.jump(position, tile)
+                    legal_moves[piece].append(jump_tile)
 
-                    while jumping:
-
-                        if position in tile:
-                            jump_tile = self.jump(position, tile[position])
-                         
-                            if jump_tile == None:
-                                jumping = False
-
-                            else:
-
-                                print(f"Found {position} : {jump_tile[position]}")
-
-                                # Add to list of legal moves
-                                legal_moves[piece].append(jump_tile)
-
-                                # Get tiles adjacent to the jump piece
-                                tile = self.getAdjacentPieces(jump_tile)
-                        
-                        jumping = False
-                
         return legal_moves
 
     def jump(self, position, starting_tile):
