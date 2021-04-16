@@ -275,3 +275,47 @@ class Halma():
             self.board[coords] = player
         else:
             self.gameMessage = 'That move is invalid!'
+
+    def utility(self, player_turn):
+        """ Given a board, returns a measure of how strong board is;
+            Finds all player pieces on the board, and calculates how 
+            close each peice is to the opposing camp. Lower scores are
+            better and higher scores are worse.
+
+            Parameters:
+                player_turn (int): The integer representing which
+                                   player is moving (GREEN/RED)
+
+            Returns:
+                An integer score of how good the board is
+        """
+        # self.board
+        # self.getPlayerPieces
+        # Calculate # squares away from an opposing camp tile
+        pass
+
+    def minimax(self, player_turn, search_limit):
+       """  
+
+            Parameters:
+                player_turn (int): The integer representing which
+                                   player is moving (GREEN/RED)
+                search_limit (int): A limit to the amount of moves the 
+                             minimax is allowed to search
+
+            Returns:
+                A relatively optimal move within the given time limit 
+                and search limit
+        """
+        pass
+    
+    def alpha_beta(self):
+        """ Performs alpha beta pruning to remove uninteresting moves
+            from the search tree
+
+            Parameters:
+
+            Returns:
+                A new ...
+        """
+        pass
