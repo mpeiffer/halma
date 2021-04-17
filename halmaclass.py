@@ -253,9 +253,8 @@ class Halma():
             if move in legal_pieces:
                 self.board[move] = player
                 return self.board
-        else:
-            self.gameMessage = 'That move is invalid!'
-
+        
+        self.gameMessage = 'That move is invalid!'
         return self.board
 
     def utility(self, player_turn):
