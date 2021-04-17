@@ -1,6 +1,7 @@
 # Python Standard Library imports
 import time
 from typing import Dict, List, Any
+from math import inf
 
 EMPTY = 0
 GREEN = 1
@@ -308,7 +309,72 @@ class Halma():
                 and search limit
         """
         pass
-    
+   
+    def max_value(self):
+        """ Gets the action with the max value
+
+            Parameters:
+                player_turn (int): The integer representing which
+                                   player is moving (GREEN/RED)
+
+                alpha (int): The best value to maximize
+
+                beta (int): The best value to minimize
+
+            Returns:
+                An action
+        """ 
+        # Terminal test
+        if self.detectWin():
+            return self.utility
+
+        # Initialize value
+        v = -inf
+        
+        # loop through action and state in legal moves
+        for a, s in self.moveGenerator(player_turn):
+            v = max(v, min_value(player_turn, alpha, beta))
+            
+            if v >= beta:
+                return v
+
+            alpha = max(alpha, v)
+
+        return v
+
+
+    def min_value(self, player_turn, alpha, beta):
+        """ Gets the action with the min value
+
+            Parameters:
+                player_turn (int): The integer representing which
+                                   player is moving (GREEN/RED)
+
+                alpha (int): The best value to maximize
+
+                beta (int): The best value to minimize
+
+            Returns:
+                An action
+        """
+        # Terminal test
+        if self.detectWin():
+            return self.utility
+
+        # Initialize value
+        v = inf
+
+        # loop through action and state in legal moves
+        for a, s in self.moveGenerator(player_turn):
+            v = min(v, max_value(player_turn, alpha, beta))
+            
+            if v <= alpha:
+                return v
+
+            beta = min(beta, v)
+
+        return v
+
     def alpha_beta(self):
         """ Performs alpha beta pruning to remove uninteresting moves
             from the search tree
