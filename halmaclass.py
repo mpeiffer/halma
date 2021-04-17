@@ -232,10 +232,13 @@ class Halma():
 
         return False
 
-    def action(self, move, player):
+    def action(self, prev, move, player):
         """ Generates a new board representing the
                 move the player took
                 Parameters:
+                    prev (int): Corrdinates representing the
+                                previous move the player made
+                           
                     move (int): Corrdinates representing the
                                 move the player made
                                 
@@ -252,6 +255,7 @@ class Halma():
 
             if move in legal_pieces:
                 self.board[move] = player
+                self.board[prev] = EMPTY
                 return self.board
         
         self.gameMessage = 'That move is invalid!'
