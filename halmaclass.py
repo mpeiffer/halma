@@ -266,6 +266,7 @@ class Halma():
             'p': 15
         }
 
+        print(move)
         # Convert user input to coordinates
         coords = (to_num[move[0]], int(move[1]))
 
