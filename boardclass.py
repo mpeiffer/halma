@@ -75,5 +75,5 @@ class Board(tk.Tk):
 
                 game.action(self.secondClicked, game.current_player)
                 
-                if game.gameMessage == 'That move is invalid!':
-                    Board(game, game.gameMessage)
+                #if game.gameMessage == 'That move is invalid!':
+                 #   Board(game, game.gameMessage)
