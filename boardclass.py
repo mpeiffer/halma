@@ -73,8 +73,8 @@ class Board(tk.Tk):
                 self.current_move = self.asletter[self.clicked[0]] + str(self.clicked[1]) + "->" + \
                                     self.asletter[self.secondClicked[0]] + str(self.secondClicked[1])
 
-                game.action(self.secondClicked, game.current_player)
-                
+                game.action(self.clicked, self.secondClicked, game.current_player)
+               
                 # Update current player
                 if game.current_player == 1:
                     game.current_player = 2
