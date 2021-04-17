@@ -248,14 +248,10 @@ class Halma():
             """
         legal = self.moveGenerator(player)
 
-        print(move)
-        print(legal.values())
-
-        print(move in legal.values())
-
-        if move in legal.values():
-            self.board[move] = player
-        
+        for legal_pieces in legal:
+            if move in legal_pieces:
+                self.board[move] = player
+                return self.board
         else:
             self.gameMessage = 'That move is invalid!'
 
