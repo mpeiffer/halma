@@ -248,6 +248,9 @@ class Halma():
             """
         legal = self.moveGenerator(player)
 
+        print(move)
+        print(legal.values())
+
         if move in legal.values():
             self.board[move] = player
         
