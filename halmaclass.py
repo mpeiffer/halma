@@ -290,10 +290,30 @@ class Halma():
             Returns:
                 An integer score of how good the board is
         """
-        # self.board
-        # self.getPlayerPieces
-        # Calculate # squares away from an opposing camp tile
-        pass
+        # Get all player peices
+        pieces = self.getPlayerPieces
+
+        # Keep track of each piece's score
+        scores = []
+
+        # Get opposing player's camp location
+        if player_turn == GREEN:
+            camp = self.redcamp
+        else:
+            camp = self.greencamp
+
+        # Only move pieces not already in camp
+        for piece in pieces:
+            if piece not in camp:
+                scores.append(piece)
+
+        # Pieces with lower coordinates closer to red camp
+        if player_turn == GREEN:
+            return min(scores)
+       
+        # Pieces with higher coordinates closer to green camp
+        else:
+            return max(scores)
 
     def minimax(self, player_turn, search_limit):
        """  
