@@ -308,7 +308,19 @@ class Halma():
                 A relatively optimal move within the given time limit 
                 and search limit
         """
-        pass
+        v = -inf
+        alpha = -inf
+        beta = inf
+
+        for a, s in self.moveGenerator():
+            v = max(v, min_value(s, alpha, beta))
+
+            if v >= beta:
+                return v
+
+            alpha = max(alpha, v)
+        
+        return v
    
     def max_value(self):
         """ Gets the action with the max value
@@ -374,14 +386,3 @@ class Halma():
             beta = min(beta, v)
 
         return v
-
-    def alpha_beta(self):
-        """ Performs alpha beta pruning to remove uninteresting moves
-            from the search tree
-
-            Parameters:
-
-            Returns:
-                A new ...
-        """
-        pass
