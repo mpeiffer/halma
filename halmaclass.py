@@ -272,6 +272,10 @@ class Halma():
         # Get legal moves for current player
         legal = self.moveGenerator(player)
 
+        print(coords)
+        print(legal.values())
+        print(player)
+
         if coords in legal.values():
             self.board[coords] = player
         else:
