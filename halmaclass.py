@@ -316,8 +316,7 @@ class Halma():
             return max(scores)
 
     def minimax(self, player_turn, search_limit):
-       """  
-
+        """
             Parameters:
                 player_turn (int): The integer representing which
                                    player is moving (GREEN/RED)
@@ -328,9 +327,9 @@ class Halma():
                 A relatively optimal move within the given time limit 
                 and search limit
         """
-        v = -inf
-        alpha = -inf
-        beta = inf
+        v = -math.inf
+        alpha = -math.inf
+        beta = math.inf
 
         for a, s in self.moveGenerator():
             v = max(v, min_value(s, alpha, beta))
@@ -361,7 +360,7 @@ class Halma():
             return self.utility
 
         # Initialize value
-        v = -inf
+        v = -math.inf
         
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
@@ -394,7 +393,7 @@ class Halma():
             return self.utility
 
         # Initialize value
-        v = inf
+        v = math.inf
 
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
