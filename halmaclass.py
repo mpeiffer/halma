@@ -277,6 +277,8 @@ class Halma():
         else:
             self.gameMessage = 'That move is invalid!'
 
+        return self.board
+
     def utility(self, player_turn):
         """ Given a board, returns a measure of how strong board is;
             Finds all player pieces on the board, and calculates how 
