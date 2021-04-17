@@ -251,6 +251,8 @@ class Halma():
         print(move)
         print(legal.values())
 
+        print(move in legal.values())
+
         if move in legal.values():
             self.board[move] = player
         
