@@ -249,6 +249,7 @@ class Halma():
         legal = self.moveGenerator(player)
 
         for legal_pieces in legal:
+            print(move, legal_pieces)
             if move in legal_pieces:
                 self.board[move] = player
                 return self.board
