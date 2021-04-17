@@ -77,7 +77,7 @@ class Board(tk.Tk):
                 
                 # Update current player
                 if game.current_player == 1:
-                    game.current_player = 2:
+                    game.current_player = 2
 
                 else:
                     game.current_player = 1
