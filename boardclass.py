@@ -75,4 +75,11 @@ class Board(tk.Tk):
 
                 game.action(self.secondClicked, game.current_player)
                 
+                # Update current player
+                if game.current_player == 1:
+                    game.current_player = 2:
+
+                else:
+                    game.current_player = 1
+            
                 Board(game, game.gameMessage)
