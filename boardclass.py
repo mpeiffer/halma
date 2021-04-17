@@ -73,7 +73,7 @@ class Board(tk.Tk):
                 self.current_move = self.asletter[self.clicked[0]] + str(self.clicked[1]) + "->" + \
                                     self.asletter[self.secondClicked[0]] + str(self.secondClicked[1])
 
-                game.board = game.action(self.secondClicked, game.current_player)
+                game.action(self.secondClicked, game.current_player)
                 
                 if game.gameMessage == 'That move is invalid!':
                     Board(game, game.gameMessage)
