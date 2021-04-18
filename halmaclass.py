@@ -27,7 +27,7 @@ class Halma():
                     red_camp.append((row, col))
                 elif row + col > 2 * (b_size - 3):
                     board[(row, col)] = GREEN
-                    green_camp.append((row, col, 1))
+                    green_camp.append((row, col))
                 else:
                     board[(row, col)] = EMPTY
 
