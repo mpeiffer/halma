@@ -314,8 +314,8 @@ class Halma():
         alpha = (float('-inf'), float('-inf'))
         beta = (float('inf'), float('inf'))
 
-        for x in self.moveGenerator(player_turn).values()[0]:
-            v = max(x, self.min_value(player_turn, alpha, beta))
+        for x in self.moveGenerator(player_turn).values():
+            v = max(x[0], self.min_value(player_turn, alpha, beta))
 
             if v >= beta:
                 return v
@@ -346,8 +346,8 @@ class Halma():
         v = (float('-inf'), float('-inf'))
         
         # loop through action and state in legal moves
-        for x in self.moveGenerator(player_turn).values()[0]:
-            v = max(x, self.min_value(player_turn, alpha, beta))
+        for x in self.moveGenerator(player_turn).values():
+            v = max(x[0], self.min_value(player_turn, alpha, beta))
             
             if v >= beta:
                 return v
@@ -379,8 +379,8 @@ class Halma():
         v = (float('inf'), float('inf'))
 
         # loop through action and state in legal moves
-        for x in self.moveGenerator(player_turn).values()[0]:
-            v = min(v, self.max_value(player_turn, alpha, beta))
+        for x in self.moveGenerator(player_turn).values():
+            v = min(x[0], self.max_value(player_turn, alpha, beta))
             
             if v <= alpha:
                 return v
