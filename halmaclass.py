@@ -1,7 +1,6 @@
 # Python Standard Library imports
 import time
 from typing import Dict, List, Any
-from math import inf
 
 EMPTY = 0
 GREEN = 1
