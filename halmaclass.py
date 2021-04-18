@@ -314,7 +314,7 @@ class Halma():
         alpha = float('-inf')
         beta = float('inf')
 
-        for a, s in self.moveGenerator():
+        for a, s in self.moveGenerator(player_turn):
             v = max(v, min_value(s, alpha, beta))
 
             if v >= beta:
