@@ -83,7 +83,7 @@ class Board(tk.Tk):
                     # AI making move
                     to_move = game.utility(2)
                     self.clicked = to_move
-                    moves = game.move_generator(2)
+                    moves = game.moveGenerator(2)
                     self.secondClicked = moves[to_move]
                     game.action(self.clicked, self.secondClicked, game.current_player)
                     game.current_player = 1
