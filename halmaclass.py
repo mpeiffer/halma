@@ -274,7 +274,7 @@ class Halma():
                 An integer score of how good the board is
         """
         # Get all player peices
-        pieces = self.getPlayerPieces
+        pieces = self.getPlayerPieces(player_turn)
 
         # Keep track of each piece's score
         scores = []
