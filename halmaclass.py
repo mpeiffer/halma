@@ -340,7 +340,7 @@ class Halma():
         """ 
         # Terminal test
         if self.detectWin():
-            return self.utility
+            return self.utility(player_turn)
 
         # Initialize value
         v = float('-inf')
@@ -373,7 +373,7 @@ class Halma():
         """
         # Terminal test
         if self.detectWin():
-            return self.utility
+            return self.utility(player_turn)
 
         # Initialize value
         v = float('inf')
