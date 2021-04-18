@@ -324,7 +324,7 @@ class Halma():
         
         return v
    
-    def max_value(self):
+    def max_value(self, player_turn, alpha, beta):
         """ Gets the action with the max value
 
             Parameters:
