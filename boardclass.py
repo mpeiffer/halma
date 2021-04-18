@@ -80,6 +80,12 @@ class Board(tk.Tk):
                     game.current_player = 2
 
                 else:
+                    # AI making move
+                    to_move = game.utility(2)
+                    self.clicked = to_move
+                    moves = game.move_generator(2)
+                    self.secondClicked = moves[to_move]
+                    game.action(self.clicked, self.secondClicked, game.current_player)
                     game.current_player = 1
             
                 Board(game, game.gameMessage)
