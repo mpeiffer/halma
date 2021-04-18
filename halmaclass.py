@@ -311,9 +311,9 @@ class Halma():
                 A relatively optimal move within the given time limit 
                 and search limit
         """
-        v = -math.inf
-        alpha = -math.inf
-        beta = math.inf
+        v = -Math.inf
+        alpha = -Math.inf
+        beta = Math.inf
 
         for a, s in self.moveGenerator():
             v = max(v, min_value(s, alpha, beta))
@@ -344,7 +344,7 @@ class Halma():
             return self.utility
 
         # Initialize value
-        v = -math.inf
+        v = -Math.inf
         
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
@@ -377,7 +377,7 @@ class Halma():
             return self.utility
 
         # Initialize value
-        v = math.inf
+        v = Math.inf
 
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
