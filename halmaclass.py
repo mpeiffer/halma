@@ -347,7 +347,7 @@ class Halma():
         
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
-            v = max(v, min_value(player_turn, alpha, beta))
+            v = max(v, self.min_value(player_turn, alpha, beta))
             
             if v >= beta:
                 return v
@@ -380,7 +380,7 @@ class Halma():
 
         # loop through action and state in legal moves
         for a, s in self.moveGenerator(player_turn):
-            v = min(v, max_value(player_turn, alpha, beta))
+            v = min(v, self.max_value(player_turn, alpha, beta))
             
             if v <= alpha:
                 return v
